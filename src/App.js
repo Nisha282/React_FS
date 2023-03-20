@@ -1,17 +1,35 @@
 // import React from "react";
-import React, { useState } from "react";
-import logo from "./";
-import "./App.css";
+import React, {useState,useEffect} from 'react'
+// import React, { useState } from "react";
+// import React, { Component } from "react";
+// import React, {Suspense , lazy}  from "react";
+// const Home = lazy(()=> import('./Home'))
+// const ABout = lazy(()=> import('./ABout'))
+// import logo from "./";
+// import "./App.css";
 // import Student from './Student'
 // import Forms from "./Forms";
 // import  EH from "./EH.js";
-import User from "./User";
-import Style from "./Style";
+// import User from "./User";
+// import ErrorBound from "./ErrorBound";
+// import Style from "./Style";
 
-import About from "./cmp/About";
-import Home from "./cmp/Home";
-import Forms from "./cmp/Forms";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import About from "./cmp/About";
+// import Home from "./cmp/Home";
+// import Forms from "./cmp/Forms";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import Other from "./Other";
+// import { Button, Container , Row ,Col } from "react-bootstrap";
+// import { Button, Modal } from "react-bootstrap";
+// import PureComponent from "./pureComponent";
+// import Home from "./Home";
+// import ABout from "./ABout";
+import useTitle from './useTitle';
+
+
+
+
+
 
 // / ======================== 1St Code Run in React & class Component===========================================================
 // import logo from "./logo.svg";
@@ -228,7 +246,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // }
 // ======================================================================
-
 
 // ------------------Life Cycle Method------------------------------------
 
@@ -562,6 +579,352 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // }
 // ==========================================================================================
 
+// ------------------------------portal------------------------
+// import Other from './Other';
+// class App extends React.Component {
+
+//   render(){
+//     return(
+//       <div>
+//         <h1>React Portal</h1>
+//         <Other/>
+//       </div>
+//     )
+//   }
+// }
+
+// =================================================================
+
+// ----------------------use refs-------------------------------------
+
+// class App extends React.Component {
+// constructor(){
+//   super()
+//   this.userRef= React.createRef();
+// }
+// editVal(){
+// // console.warn(this.userRef)
+// this.userRef.current.focus()
+// }
+//     render(){
+//       return(
+//         <div>
+//           <h1>What is Ref in React</h1>
+//           <input ref ={this.userRef} type ="text" name = "user" />
+//           <button onClick={()=>this.editVal()}> Click me</button>
+//         </div>
+//       )
+//     }
+// }
+
+// ===========================================================================
+
+// Use bootstrap with react
+// class App extends React.Component {
+//   render() {
+//     return (
+//       <div>
+//         <h1>Use bootstrap with react </h1>
+//         <Button onClick={() => alert("item clicked")}>Click me</Button>
+//         <Container>
+//           <Row className = "justify-content-md-center">
+//             <Col xs lg ="2">
+//               1 of 3
+//             </Col>
+//             <Col md = "auto"> Variable width content</Col>
+//             <Col xs lg ="2">
+//               3 of 3
+//             </Col>
+//           </Row>
+//           <Row>
+//             <Col> 1 of 3</Col>
+//             <Col md = "auto">Variable width content</Col>
+//             <Col xs lg = "2">
+//               3 of 3
+//             </Col>
+//           </Row>
+//         </Container>
+//       </div>
+//     );
+//   }
+// }
+
+// =====================================================================
+
+// ------------BOOTSTRAP MODAL------------------------
+
+// class App extends React.Component {
+//   constructor(){
+//     super()
+//     this.state={
+//       show:false
+//     }
+//   }
+//   handleModal(){
+//     this.setState({show : !this.state.show})
+//   }
+
+//     render(){
+//       return(
+//         <div>
+//       <button onClick={()=>{this.handleModal()}}> Click Me </button>
+//       <Modal show ={this.state.show} onHide={()=>this.handleModal()}>
+//         <Modal.Header closeButton>Modal Heading</Modal.Header>
+//         <Modal.Body>
+//           Hello EveryOne
+//         </Modal.Body>
+//         <Modal.Footer>
+//           <Button onClick={()=>{this.handleModal()}}>Close</Button>
+//           <Button onClick={()=>{this.handleModal()}}>Save</Button>
+//         </Modal.Footer>
+//       </Modal>
+//         </div>
+//       )
+//     }
+//   }
+
+// =============================================================================
+
+// -------------Error Boundary--------------------------------
+// import User from './User';
+// import ErrorBound from "./ErrorBound";
+// class App extends React.Component {
+
+//   render(){
+//     return(
+//       <div>
+//         <h1>Error Boundary in React</h1>
+
+//         <ErrorBound ><User/></ErrorBound>
+//       </div>
+//     )
+//   }
+// }
+
+// =========================================================
+
+// ------------------Server Side Rendwring---------------
+
+//----------------------- pure component---------------------
+// class App extends React.Component {
+
+//     render(){
+//       return(
+//         <div>
+//           <PureComponent/>
+//         </div>
+//       )
+//     }
+//   }
+
+// =======================================================================
+
+// =================memo============================
+// import React, { useState } from "react";
+// const App=()=>{
+//   const [count ,setCount]=useState(0)
+//   const [data,setData] = useState(0)
+//   return(
+//     <div>
+//       Memo with react {count}
+//       <Home data ={data}/>
+//       <button onClick={()=>setCount(count+1)}>count</button>
+//       <button onClick={()=>setData(data+1)}>Data</button>
+//     </div>
+//   )
+// }
+// =======================================================
+
+// ---------------------JWT AUTHENTICATION----------------
+// import React, { Component } from "react";
+// class App extends Component {
+//   constructor(){
+//     super()
+//     this.state={
+//       email: null,
+//       password: null,
+//       login:false,
+//       token:null
+
+//     }
+//   }
+
+//   login(){
+//     console.log("form data " , this.state)
+//   }
+//   render(){
+//     return(
+//       <div>
+//         <h1>JWT Token with</h1>
+//         <div>
+//           <input type = "text" onChange={(event)=>{this.setState({email:event.target.value})}} /><br/><br/>
+//           <input type = "password" onChange={(event)=>{this.setState({password:event.target.value})}} /><br/><br/>
+//           <button onClick={()=>{this.login()}}>Login</button>
+//         </div>
+//       </div>
+//     )
+
+//   }
+// }
+// ==================================================================
+
+// ------------UNCONTROLLED COMPONENT-------------------
+
+// class App extends React.Component {
+//   constructor(){
+//     super()
+//     this.name = React.createRef();
+//     this.password= React.createRef();
+//   }
+//   submitHandle(event){
+//     event.preventDefault()
+//     console.log(this.name.current.value, this.password.current.value)
+
+//   }
+//   render(){
+//     return(
+//       <div className="App">
+//         <h1>Uncontrolled Component</h1>
+//         <form onSubmit={(event)=>{this.submitHandle(event)}}>
+//           <input type="text" placeholder="enter name" ref={this.name}/> <br/> <br/>
+//           <input type="password" placeholder="enter Password" ref={this.password}/> <br/> <br/>
+//           <button type="submit">Submit</button>
+
+//         </form>
+//       </div>
+//     )
+//   }
+
+// }
+// -------------------------------------------------------------------
+
+// ---------------------CONTROLLED COMPONENT--------------------------
+
+// class App extends React.Component {
+//   constructor() {
+//     super();
+//     this.State = {
+//       name: "",
+//       password: "",
+//     };
+//   }
+//   submit() {
+//     console.log(this.state);
+//   }
+//   render() {
+//     return (
+//       <div className="App">
+//         <h1>Controlled Component</h1>
+//         <input
+//           type="text"
+//           placeholder="enter name"
+//           onChange={(event) => {
+//             this.setState({ name: event.target.value });
+//           }}
+//         />
+//         <br /> <br />
+//         <input
+//           type="password"
+//           placeholder="enter password"
+//           onChange={(event) => {
+//             this.setState({ password: event.target.value });
+//           }}
+//         />
+//         <br /> <br />
+//         <button
+//           onClick={() => {
+//             this.submit();
+//           }}
+//         >
+//           submit
+//         </button>
+//       </div>
+//     );
+//   }
+// }
+
+// ==============================================================
+
+// ----------------------Lazy Loading-------------------------
+
+// class App extends React.Component {
+//   render(){
+//       return(
+//           <div>
+//              <h1>Lazy Loading</h1>
+//             <Suspense fallback={<div>please wait...</div>}>
+             
+//               <Home/>
+              
+//               </Suspense>
+//               <Suspense fallback={<div>please wait...About</div>}>
+             
+            
+//               <ABout/>
+//               </Suspense>
+//           </div>
+//       )
+//   }
+// }
+// ==================================================
+
+
+// =================Uplod File=====================
+// class App extends React.Component {
+// upload(e){
+//   console.log(e.target.files)
+//   const files =e.target.files
+//   const formData = new FormData();
+//   formData.append('img',files[0])
+//   fetch('http://127.0.0.1:8000/api/store' ,{
+//     method :"POST",
+//     body:formData
+//   }).then((resp)=>{
+//     resp.json().then((result)=>{
+//       console.log("result" ,result)
+//     })
+//   })
+// }
+//       render(){
+//         return(
+//           <div>
+//            <h1>Upload File in React js</h1>
+//            <input type="file" onChange={(e)=>this.upload(e)} name ="img" />
+//           </div>
+//         )
+//       }
+//     }
+// =================================================
+
+// --------------Type CHecking with proptypes in React------------
+// class App extends React.Component {
+
+//       render(){
+//         return(
+//           <div>
+//           <h1>Type checking with prototypes in React</h1>
+//           <ABout age={"20"} />
+//           </div>
+//         )
+//       }
+//     }
+
+// ===================================================
+
+// ---------------custum hooks---------------
+// import useTitle from './useTitle';
+const App =()=> {
+ 
+  const [count ,setCount]=useState(0)
+  useTitle(count)
+return(
+            <div>
+            <h1>Custom Hook</h1>
+            <button onClick={()=>setCount(count+1)}>Clicks</button>
+            </div>
+          )
+        }
+      
 
 
 export default App;
